@@ -1,7 +1,6 @@
 # SoloProject
 
 #Completed
-# Project MVP 
 Login & Registration w/validations
 CSS w/bootstrap
 Model Story table with CRUD functionality

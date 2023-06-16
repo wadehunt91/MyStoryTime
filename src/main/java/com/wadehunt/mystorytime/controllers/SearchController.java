@@ -37,7 +37,7 @@ public class SearchController {
 			Model model,
 			HttpSession session) {
 		model.addAttribute("user", userServ.findById((Long)session.getAttribute("userId")));
-		return "searchStoryQuery.jsp";
+		return "search.jsp";
 	}
 	
 	@GetMapping("/search/")
@@ -50,6 +50,7 @@ public class SearchController {
 		if(stories.isEmpty()) {
 			stories = null;
 		}
+		model.addAttribute("storyGenre", storyGenre);
 		model.addAttribute("stories", stories);
 		model.addAttribute("pictureUrl", "/profilepicture/story/${story.storyAuthor.id}");
 		model.addAttribute("user", userServ.findById((Long)session.getAttribute("userId")));

@@ -41,8 +41,8 @@
 	  		</div>
 		</nav>
 		<div>
-			<form action="/search/" method="get"class="d-flex mt-1" default>
-				<select name="q" class="form-control" value="${storyGenre}">
+			<form action="/search/" method="get"class="d-flex pt-1" >
+				<select name="q" class="form-control">
 					<option value="" selected disabled hidden="null">Choose here</option>
 			        <option value="Action And Adventure">Action and Adventure</option>
 					<option value="Alternate History">Alternate History</option>
@@ -72,51 +72,11 @@
 				    <option value="Suspense and Thrillers">Suspense and Thrillers</option>
 				    <option value="Travel">Travel</option>
 	           </select>
-			   <div class="ml-1">
-			   		<button  class="btn btn-secondary mx-auto">Search</button>
+	           <div class="ml-1">
+			   	<button  class="btn btn-secondary mx-auto">Search</button>
 			   </div>
 			</form>
 		</div>
-		<div class="d-flex justify-content-around display mt-1">
-			<h4 class="display-4 text-center">${storyGenre}</h4>
-			<jsp:useBean id="now" class="java.util.Date" />
-    		<fmt:formatDate value="${now}" pattern="h:mm a" var="formattedDate"/>
-    		<p class="my-auto">Last Updated: ${formattedDate}</p>
-		</div>
-		<c:forEach var="story" items="${stories}">
-			<div class="d-flex row storyCard m-1 display">
-				<div class=" col d-flex flex-column my-auto">
-					<h3 class="display-4 text-center">${story.storyAuthor.userName}</h3>
-					<c:if test="${pictureUrl != null}">
-						<img class="mx-auto profilePicture" height="300px" width="300px"src="/profilepicture/story/${story.storyAuthor.id}" alt="${story.storyAuthor.fName} ${story.storyAuthor.lName}'s profile picture" />
-					</c:if>
-				</div>
-				<div class="w-50 col">
-					<a href="/story/view/${story.id}" class="text-decoration-none display"><h2 class="text-center mx-auto">${story.storyTitle}</h2></a>
-					<div class="d-flex justify-content-around">
-						<p>${story.likes.size()} Likes</p>
-						<c:if test="${story.storyAuthor.id != user.id }">
-							<form:form action="/story/${story.id}/newLike" modelAttribute="like" method="post" class="d-flex mb-3">
-								<input type="submit" value="Like" class="btn btn-md btn-secondary text-white"/>
-							</form:form>
-						</c:if>
-						<fmt:formatDate value="${story.createdAt}" pattern=" MM/dd/YYYY HH:mm" var="formattedDate2"/>
-						<p>Submitted ${formattedDate2}</p>
-					</div>
-					<div class="my-auto">
-						 <c:if test="${story.storyDescription != null }">
-						 	<p class="text-center">${story.storyDescription}</p>
-						 </c:if>
-						 <c:if test="${story.storyDescription == null }">
-						 	<p>No description provided. . .</p>
-						 </c:if>
-					</div>
-				</div>
-			</div>
-		</c:forEach>
-		<c:if test="${stories == null }">
-			<h3 class="display-3 display text-center">No stories added</h3>
-		</c:if>
 	</div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

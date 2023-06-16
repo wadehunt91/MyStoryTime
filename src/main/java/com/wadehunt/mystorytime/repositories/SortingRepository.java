@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.wadehunt.mystorytime.models.Story;
-import com.wadehunt.mystorytime.models.User;
 
 public interface SortingRepository extends PagingAndSortingRepository<Story, Long>{
 	
@@ -17,4 +16,8 @@ public interface SortingRepository extends PagingAndSortingRepository<Story, Lon
 	
 	@Query(value="SELECT * FROM a_good_book.story WHERE user_id = ?1 ORDER BY created_at DESC", nativeQuery=true)
 	Page<Story> findStoriesByStoryAuthor(PageRequest pageRequest, Long userId);
+	
+	@Query(value="SELECT * FROM a_good_book.story ORDER BY created_at DESC LIMIT =?1", nativeQuery=true)
+	Page<Story> findStoriesForDashboard(PageRequest pageRequest, int limit);
 }
+ 

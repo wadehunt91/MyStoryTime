@@ -88,7 +88,7 @@
 					      	</c:if>
 					    </li>
 					    <c:forEach begin="1" end="${totalPages}" var="index">
-				        	<a href="/dashboard/${index}" class="page-link page text-white">${index}</a>
+				        	<a href="/view/author/${userId}/${index}" class="page-link page text-white">${index}</a>
 				    	</c:forEach>
 				    	<li>
 				    		<c:if test="${currentPage != totalPages }">

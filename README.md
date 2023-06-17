@@ -22,3 +22,4 @@ email verification
 Public Deployment
 Story Artwork
 Story Co-creation space (Story created by several different authors in sections)
+Get Date/Time working correctly when deployed on AWS (Currently 10:52 deployment is showing 5:52 am)

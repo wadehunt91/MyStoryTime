@@ -51,7 +51,7 @@ public class ImageController {
 	            image.setData(file.getBytes());
 	            image.setUserId(currentUser.getId());
 	            profilePicServ.save(image);
-	            return "redirect:/dashboard";}
+	            return "redirect:/dashboard/1";}
 			 else {
 				 optImage.setName(file.getOriginalFilename());
 				 optImage.setData(file.getBytes());

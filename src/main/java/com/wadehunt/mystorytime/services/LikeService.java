@@ -32,13 +32,20 @@ public class LikeService {
 		likeRepo.delete(like);
 	}
 	
-	public void findAndChangeLike(Long storyId, Long userId, Like like) {
+	public boolean findAndChangeLike(Long storyId, Long userId, Like like) {
 		Optional<Like> isLiked = likeRepo.findStoryLikes(storyId, userId);
 		if(isLiked.isEmpty()) {
 			likeRepo.save(like);
+			return true;
 		}
 		else {
 			likeRepo.deleteById(isLiked.get().getId());
+			return false;
 		}
+	}
+	
+	public Optional<Like> userLikes(Long storyId, Long userId){
+		Optional<Like> isLiked = likeRepo.findStoryLikes(storyId, userId);
+			return isLiked;
 	}
 }

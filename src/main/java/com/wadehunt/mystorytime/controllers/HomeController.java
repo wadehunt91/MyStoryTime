@@ -7,8 +7,6 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +20,7 @@ import com.wadehunt.mystorytime.models.LoginUser;
 import com.wadehunt.mystorytime.models.Story;
 import com.wadehunt.mystorytime.models.User;
 import com.wadehunt.mystorytime.services.JokeService;
+import com.wadehunt.mystorytime.services.LikeService;
 import com.wadehunt.mystorytime.services.ProfilePictureService;
 import com.wadehunt.mystorytime.services.StoryService;
 import com.wadehunt.mystorytime.services.StorySortingService;
@@ -44,6 +43,9 @@ public class HomeController {
 	
 	@Autowired
 	private JokeService jokeServ;
+	
+	@Autowired
+	private LikeService likeServ;
 
 	@GetMapping("/")
 	public String index(

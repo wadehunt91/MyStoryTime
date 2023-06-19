@@ -68,11 +68,11 @@
 					<a href="/story/view/${story.id}" class="text-decoration-none display" ><h2 class="text-center mx-auto">${story.storyTitle}</h2></a>
 					<div class="d-flex justify-content-around">
 						<p>${story.likes.size()} Likes</p>
-						<c:if test="${story.storyAuthor.id != user.id }">
-							<form:form action="/story/${story.id}/newLike" modelAttribute="like" method="post" class="d-flex mb-3">
-								<input type="submit" value="Like" class="btn btn-md btn-secondary text-white"/>
-							</form:form>
-						</c:if>
+							<c:if test="${story.storyAuthor.id != user.id }">
+										<form:form action="/story/${story.id}/newLike" modelAttribute="like" method="post" class="d-flex mb-3">
+											<input type="submit" value="Like" class="btn btn-md btn-secondary text-white"/>
+										</form:form>
+							</c:if>
 						<fmt:formatDate value="${story.createdAt}" pattern="MMM dd, yyyy h:mm a" var="formattedDate2"/>
 						<p>Submitted ${formattedDate2}</p>
 					</div>
